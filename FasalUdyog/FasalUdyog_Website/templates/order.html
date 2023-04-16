@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <style>
+        .regform {
+            width: 500px;
+            margin: 0 auto;
+            padding: 20px;
+            border: 2px solid #20ad6b;
+            border-radius: 10px;
+            margin-top: 50px;
+            background-color: #212529;
+            color: white;
+        }
+
+        .regform h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+    </style>
+
+    <form action="" method=POST>
+        {% csrf_token %}
+
+        <div class="regform">
+            <h2>Place Order</h2>
+            {{ form.as_p }}
+
+            <button type="submit" class="btn btn-success">Submit</button>
+            {% if submitted %}
+                Order Placed!
+            {% endif %}
+        </div>
+    </form>>
+{% endblock %}

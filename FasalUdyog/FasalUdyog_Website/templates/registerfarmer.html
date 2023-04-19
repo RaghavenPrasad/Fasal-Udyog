@@ -1,0 +1,73 @@
+{% extends "base.html" %}
+
+{% block content %}
+    {% if user.is_authenticated %} 
+
+    <style>
+        .regform {
+            width: 500px;
+            margin: 0 auto;
+            padding: 20px;
+            border: 2px solid #20ad6b;
+            border-radius: 10px;
+            margin-top: 50px;
+            background-color: #212529;
+            color: white;
+        }
+
+        .regform h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+/* 
+        .input-container {
+            margin-bottom: 15px;
+        }
+
+        .input-container label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .input-container input {
+            width: 100%;
+            padding: 5px;
+            border: 1px solid #20ad6b;
+            border-radius: 5px;
+        } */
+    </style>
+
+    <form action="" method=POST>
+        {% csrf_token %}
+
+        <div class="regform">
+            <h2>REGISTER FARMER</h2>
+            {{ form.as_p }}
+
+            <!-- <div class="input-container">
+                <label for="NAME">NAME</label>
+                <input type="text" id="username" />
+            </div>
+            <div class="input-container">
+                <label for="NAME">Aadhar</label>
+                <input type="text" id="aadhar" />
+            </div>
+            <div class="input-container">
+                <label for="STORE ID">STOREID:</label>
+                <input type="text" id="store" />
+            </div>
+            <div class="input-container">
+                <label for="def">STATE</label>
+                <input type="text" id="state" />
+            </div> -->
+            <button type="submit" class="btn btn-success">Submit</button>
+            {% if submitted %}
+                Farmer Registered Successfully!
+            {% endif %}
+        </div>
+    </form>>
+
+    {% else %}
+        <h1 style="text-align: center; margin-top: 5cm; color: #212529;">Sorry! You Must Login To View This Page</h1>
+    {% endif %}
+{% endblock %}

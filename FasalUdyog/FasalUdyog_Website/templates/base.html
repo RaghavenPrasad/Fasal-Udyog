@@ -44,6 +44,8 @@
           align-items: center;
           height: 40px;
           padding: 0 50px;
+          text-shadow: 1px 1px 2px #212529;
+
       }
 
       .navtabs-container {
@@ -62,7 +64,7 @@
       }
 
       .user-container {
-          width: 150px;
+          /* width: 150px; */
           display: flex;
           justify-content: center;
           align-items: center;
@@ -73,6 +75,7 @@
       .user-container .navtab {
           text-decoration: none;
           color: white; 
+          margin-right: 35px;
       }
 
     </style>
@@ -86,11 +89,12 @@
 
         {% if user.is_authenticated %} 
             <div class="user-container">
-            <a class="navtab" href="{% url 'logout' %}"> Logout </a>
+                <a class="navtab"> Welcome, {{ user.username }} </a>
+                <a class="navtab" href="{% url 'logout' %}"> Logout </a>
             </div>
         {% else %}
             <div class="user-container">
-            <a class="navtab" href="{% url 'login' %}"> Login </a>
+                <a class="navtab" href="{% url 'login' %}"> Login </a>
             </div>
         {% endif %}
 
@@ -100,13 +104,17 @@
       <div class="navtabs-container">
         <a class="navtab" href="{% url 'home' %}"> Home </a>
         {% if user.is_authenticated %} 
-        <a class="navtab" href="{% url 'registerfarmer' %}"> Register Farmer </a>
-        <a class="navtab" href="{% url 'order' %}"> Place Order </a>
+            {% if user.groups.all.0.name == "Center_Manager" %}
+                <a class="navtab" href="{% url 'registerfarmer' %}"> Register Farmer </a>
+            {% endif %}
+            {% if user.groups.all.0.name == "Consumer" %}
+                <a class="navtab" href="{% url 'order' %}"> Place Order </a>
+            {% endif %}
         {% endif %}
         <a class="navtab" href="{% url 'checkstock' %}"> Check Stock </a>
-        <a class="navtab" href="/about"> About Us </a>
+        <a class="navtab" href="{% url 'about' %}"> About Us </a>
         <!-- <a class="navtab" href="{% url 'login' %}"> Login </a> -->
-
+        
       </div>
     </div>
 

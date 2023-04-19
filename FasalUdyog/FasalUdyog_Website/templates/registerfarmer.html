@@ -2,7 +2,7 @@
 
 {% block content %}
     {% if user.is_authenticated %} 
-    {% if user.groups.all.0.name == "Center_Manager" %}
+    {% if user.groups.all.0.name == "Center_Manager" or user.groups.all.0.name == "Admin" %}
 
     <style>
         .regform {

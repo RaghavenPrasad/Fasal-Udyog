@@ -2,6 +2,7 @@
 
 {% block content %}
     {% if user.is_authenticated %} 
+    {% if user.groups.all.0.name == "Consumer" or user.groups.all.0.name == "Admin" %}
 
     <style>
         .regform {
@@ -36,6 +37,9 @@
         </div>
     </form>
 
+    {% else %}
+        <h1 style="text-align: center; margin-top: 5cm; color: #212529;">Sorry! You Are Not Allowed To Access This Page</h1>
+    {% endif %}
     {% else %}
         <h1 style="text-align: center; margin-top: 5cm; color: #212529;">Sorry! You Must Login To View This Page</h1>
     {% endif %}

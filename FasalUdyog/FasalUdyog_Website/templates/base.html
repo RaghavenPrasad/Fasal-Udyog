@@ -104,10 +104,10 @@
       <div class="navtabs-container">
         <a class="navtab" href="{% url 'home' %}"> Home </a>
         {% if user.is_authenticated %} 
-            {% if user.groups.all.0.name == "Center_Manager" %}
+            {% if user.groups.all.0.name == "Center_Manager" or user.groups.all.0.name == "Admin" %}
                 <a class="navtab" href="{% url 'registerfarmer' %}"> Register Farmer </a>
             {% endif %}
-            {% if user.groups.all.0.name == "Consumer" %}
+            {% if user.groups.all.0.name == "Consumer" or user.groups.all.0.name == "Admin" %}
                 <a class="navtab" href="{% url 'order' %}"> Place Order </a>
             {% endif %}
         {% endif %}

@@ -60,3 +60,6 @@ def order(request):
         "form": orderForm(),
         "submitted": submitted,
     })
+
+def about(request):
+    return render(request, "aboutus.html")

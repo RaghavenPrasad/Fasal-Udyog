@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <style>
+        .regform {
+            width: 500px;
+            margin: 0 auto;
+            padding: 20px;
+            border: 2px solid #20ad6b;
+            border-radius: 10px;
+            margin-top: 50px;
+            background-color: #212529;
+            color: white;
+        }
+
+        .regform h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .regform .form-group {
+            margin-bottom: 20px;
+        }
+
+        /* .regform .form-group label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .regform .form-group input {
+            width: 100%;
+            padding: 5px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        } */
+
+    </style>
+
+    <form action="" method=POST>
+        {% csrf_token %}
+
+        <div class="regform">
+            <h2>Login</h2>
+            <div class="form-group">
+                <label for="username">Username:</label>
+                <input type="text" class="form-control" name="username" id="username">
+            </div>
+            <div class="form-group">
+                <label for="password">Password:</label>
+                <input type="password" class="form-control" name="password" id="password">
+            </div>
+            
+            <button type="submit" class="btn btn-success">Submit</button>
+            
+        </div>
+
+    </form>>
+{% endblock %}

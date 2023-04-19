@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <style>
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin-top: 30px;
+        }
+        .card {
+            width: 100%;
+            height: auto;
+            margin: 10px;
+            border: 2px solid #20ad6b;
+            border-radius: 10px;
+            padding: 10px;
+            background-color: #212529;
+            color: white;
+        }
+        .form-group {
+            width: 100%;
+            margin: 0 auto;
+            padding: 20px;
+            border: 2px solid #20ad6b;
+            border-radius: 10px;
+            background-color: #212529;
+            color: white;
+            margin-bottom: 10px;
+        }
+    </style>
+
+    <div class="container">
+        <form action="" method="POST">
+            {% csrf_token %}
+            
+            <div class="form-group">
+                <p style="text-align: center;">Search</p>
+                <input type="search" class="form-control" id="item_id" name="item_id" placeholder="Enter Item ID" style="text-align: center;">
+                {% if not stock %}
+                    <p style="text-align: center; margin-top: 10px; margin-bottom: 0px;">No item found</p>
+                {% endif %}
+            </div>
+        </form>
+
+        {% for item in stock %}
+            <div class="card">
+                <h5 class="card-header">{{ item.item_name }}</h5>
+                <div class="card-body">
+                <!-- <h5 class="card-title">Item ID: {{ item.item_id }}</h5> -->
+                <p class="card-text">Item ID: {{ item.item_id }}</p>
+                <p class="card-text">Quantity: {{ item.quantity }}</p>
+                <p class="card-text">Price: ₹{{ item.msp }}</p>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}
